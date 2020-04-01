@@ -9,8 +9,16 @@ Dog Breed classifier using CNN costume model vs transfer learning
 ## Steps
 The whole idea here is to make a *dog app* that is able to:
 
-- recognize if the given picture is human or a dog
+- recognize if the given picture is a human or a dog
 
 - if a dog is detected then predict its breed.
 
 - if a human face is detected, find a similar dog breed
+
+### Step 1:
+[Haar feature-based cascade classifiers](http://docs.opencv.org/trunk/d7/d8b/tutorial_py_face_detection.html) is used with OpenCV to find human faces in image files.
+If a human face is detected the classifier outputs the location of the square
+encompass the face in terms of (x,y,w,h), where (x,y) is the coordinate of the bottom
+left corner of the square and (w,h) are the width and height of the square.
+
+NB: This step could potentially be improved by trying different face detection algorithm.
