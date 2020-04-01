@@ -26,3 +26,22 @@ NB: This step could potentially be improved by trying different face detection a
 ### Step 2:
 vgg16 pretrained model is used to find dogs in pictures.
 the model returns values 151-268 if a dog is detected.
+
+### Step 3:
+a costume model is proposed to detect dg breed. The procedure was as follows:
+1- I had initially started with only convolutional layers and was limited to maximum 64 channels since greater values would pop memory error. However, the best accuracy I achieved was about 2%. This increased to 5% by implementing image augmentation. Furthermore, I attempted to eliminate maxpooling layers and instead use additional convolutional layers that would half the spatial size of the image (kernel_size=4, stride=2, padding=1). However, the model diverged.
+
+2- I mixed up skip-connections and batch normalization methods and increased my accuracy to 9%.
+
+3- Interestingly, by removing the skip connections and only using batch normalizations after each convolutional layers, I was able to increase the channels up to 128 and achieve 16% accuracy. It is believed using larger channels may further improve the accuracy.
+
+Thereby, the architecture of the final model is as follows:
+
+- 4 convolutional layers: the output channel doubles consecutively after each layer, starting form 16 to 128.
+- 3 batch normalization layers each of which is applied to the output of the convolutional layer except for the last convolutional layer.
+- 4 maxpooling layers after each convolutional layer
+- 3 fully connected layers to flatten data and obtain 133 nodes as the classes of the dog breeds. Dropout layers are added after the first and second fully connected later with the probability of 0.25 to avoid overfitting and better generalizing the model.
+- I used relu as the activation function for each layer
+
+**NB:** There was GPU usage limitation both time-wise and memory-wise so deeper and more complex model
+was not practical.
