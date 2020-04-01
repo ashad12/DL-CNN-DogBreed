@@ -18,7 +18,11 @@ The whole idea here is to make a *dog app* that is able to:
 ### Step 1:
 [Haar feature-based cascade classifiers](http://docs.opencv.org/trunk/d7/d8b/tutorial_py_face_detection.html) is used with OpenCV to find human faces in image files.
 If a human face is detected the classifier outputs the location of the square
-encompass the face in terms of (x,y,w,h), where (x,y) is the coordinate of the bottom
+encompassing the face in terms of (x,y,w,h), where (x,y) is the coordinate of the bottom
 left corner of the square and (w,h) are the width and height of the square.
 
 NB: This step could potentially be improved by trying different face detection algorithm.
+
+### Step 2:
+vgg16 pretrained model is used to find dogs in pictures.
+the model returns values 151-268 if a dog is detected.
