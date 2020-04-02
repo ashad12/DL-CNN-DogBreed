@@ -44,4 +44,11 @@ Thereby, the architecture of the final model is as follows:
 - I used relu as the activation function for each layer
 
 **NB:** There was GPU usage limitation both time-wise and memory-wise so deeper and more complex model
-was not practical.
+was not practical
+
+**Optimization Parameters and Training**:
+SGD was used with lr=0.01, smaller lr required longer training and larger lr would
+diverge.
+Cross Entropy loss was used for this classification problem.
+Training function is set to 100 epoch training, though, an early_stop parameter is
+also included to save the limited GPU hours in the workspace, which would terminate the loop if the validation loss is rising continuously. This parameter receives a value between 0 and 1 which is the ratio of the amount of the validation loss increase to the minimum recorded validation loss. If the validation loss becomes greater than (1 + early_stop)* valid_loss_min for 3 consecutive iteration, the training loop would break.
