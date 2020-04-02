@@ -52,3 +52,7 @@ diverge.
 Cross Entropy loss was used for this classification problem.
 Training function is set to 100 epoch training, though, an early_stop parameter is
 also included to save the limited GPU hours in the workspace, which would terminate the loop if the validation loss is rising continuously. This parameter receives a value between 0 and 1 which is the ratio of the amount of the validation loss increase to the minimum recorded validation loss. If the validation loss becomes greater than (1 + early_stop)* valid_loss_min for 3 consecutive iteration, the training loop would break.
+
+**Validation**:
+Validation set is used to avoid overfitting and save parameters giving
+the lowest loss in the training.
