@@ -56,3 +56,8 @@ also included to save the limited GPU hours in the workspace, which would termin
 **Validation**:
 Validation set is used to avoid overfitting and save parameters giving
 the lowest loss in the training.
+
+### Step 4:
+Here by using resnet50 pretrained model, we aim to enhance accuracy to more than 60%.
+The last fully connected layer was modified to encompass 3 fully connected layers with 2 Dropout layers (p = 0.25) in middle to better generalize the model.
+Model achieved accuracy of 85%.
